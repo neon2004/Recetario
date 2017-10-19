@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Recetario</string>
+
+    <string name="action_refresh">Actualizar</string>
+    <string name="errorNoInternet">Sin conexion a internet. ¿Quieres activar el WIFI?</string>
+    <string name="errorGetDatos">A ocurrido un error al obtener los datos</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="msgError">Error</string>
+
+    <string name="lblIngredientes">Ingredientes</string>
+    <string name="lblEnlace">Referencia</string>
+    <string name="buscar">Buscar</string>
+
+</resources>
