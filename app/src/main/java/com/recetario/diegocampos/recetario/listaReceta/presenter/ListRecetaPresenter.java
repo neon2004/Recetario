@@ -25,7 +25,6 @@ public class ListRecetaPresenter implements ListRecetaContract.Presenter {
     }
 
     public void start(String query ){
-        listRecetaFragments.showImageFondo(true);
         getDatos(query);
     }
 
@@ -35,7 +34,6 @@ public class ListRecetaPresenter implements ListRecetaContract.Presenter {
 
     @Override
     public void createAdapter(Recetas lisresult) {
-        listRecetaFragments.showImageFondo(false);
         RecetaAdapter adapter = new RecetaAdapter(lisresult.getResults(),act.getApplicationContext());
         adapter.callback = this;
         listRecetaFragments.setListAdapter(adapter);

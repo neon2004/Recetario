@@ -41,8 +41,6 @@ public class ListRecetaFragments extends BaseFragment implements ListRecetaContr
     LinearLayout activityMain;
     @ViewById(R.id.appbar)
     Toolbar appbar;
-    @ViewById(R.id.imageView)
-    ImageView imageView;
     private ListRecetaPresenter heroListPresenter;
 
     @FragmentArg
@@ -69,22 +67,6 @@ public class ListRecetaFragments extends BaseFragment implements ListRecetaContr
     @Override
     public void setLayoutManager() {
         recView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-    }
-
-    @Override
-    public RecyclerView getListView() {
-        return recView;
-    }
-
-    @Override
-    public void showImageFondo(boolean mostrar) {
-//        if (mostrar){
-//            imageView.setVisibility(View.VISIBLE);
-//            recView.setVisibility(View.GONE);
-//        }else{
-//            imageView.setVisibility(View.GONE);
-//            recView.setVisibility(View.VISIBLE);
-//        }
     }
 
     @Override

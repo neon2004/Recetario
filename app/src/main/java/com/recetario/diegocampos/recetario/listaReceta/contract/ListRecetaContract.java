@@ -26,8 +26,5 @@ public class ListRecetaContract {
         void  setListAdapter(RecetaAdapter adapter);
         void goToDetailContact(RecetaAdapter.RecetaViewHolder viewHolder, Result receta);
         void setLayoutManager();
-        RecyclerView getListView();
-        void showImageFondo(boolean mostrar);
-
     }
 }
