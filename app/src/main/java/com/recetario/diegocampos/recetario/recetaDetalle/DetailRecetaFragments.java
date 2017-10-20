@@ -64,7 +64,6 @@ public class DetailRecetaFragments extends BaseFragment implements DetailRecetaC
     public void setImage(String url) {
         Glide.with(this).load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.loading)
                 .error(R.drawable.error)
                 .fitCenter()
                 .into(imageDetail);

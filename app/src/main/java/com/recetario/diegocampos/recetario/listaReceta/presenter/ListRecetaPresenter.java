@@ -33,12 +33,6 @@ public class ListRecetaPresenter implements ListRecetaContract.Presenter {
         interactor.getListHeroes(query);
     }
 
-
-
-    public void onItemClick(Result receta){
-        listRecetaFragments.goToDetailContact(receta);
-    }
-
     @Override
     public void createAdapter(Recetas lisresult) {
         listRecetaFragments.showImageFondo(false);
@@ -50,8 +44,8 @@ public class ListRecetaPresenter implements ListRecetaContract.Presenter {
     }
 
     @Override
-    public void goDetail(Result receta) {
-        listRecetaFragments.goToDetailContact(receta);
+    public void goDetail(RecetaAdapter.RecetaViewHolder viewHolder, Result receta) {
+        listRecetaFragments.goToDetailContact(viewHolder,receta);
     }
 
     public RecetaInteractor getInteractor() {

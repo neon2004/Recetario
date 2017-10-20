@@ -1,22 +1,15 @@
 package com.recetario.diegocampos.recetario.listaReceta;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.recetario.diegocampos.recetario.R;
 import com.recetario.diegocampos.recetario.common.adapters.RecetaAdapter;
@@ -28,13 +21,9 @@ import com.recetario.diegocampos.recetario.listaReceta.presenter.ListRecetaPrese
 import com.recetario.diegocampos.recetario.receta.RecetarioActivity;
 
 
-import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
-import org.androidannotations.annotations.InjectMenu;
-import org.androidannotations.annotations.OptionsItem;
-import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 
@@ -89,19 +78,19 @@ public class ListRecetaFragments extends BaseFragment implements ListRecetaContr
 
     @Override
     public void showImageFondo(boolean mostrar) {
-        if (mostrar){
-            imageView.setVisibility(View.VISIBLE);
-            recView.setVisibility(View.GONE);
-        }else{
-            imageView.setVisibility(View.GONE);
-            recView.setVisibility(View.VISIBLE);
-        }
+//        if (mostrar){
+//            imageView.setVisibility(View.VISIBLE);
+//            recView.setVisibility(View.GONE);
+//        }else{
+//            imageView.setVisibility(View.GONE);
+//            recView.setVisibility(View.VISIBLE);
+//        }
     }
 
     @Override
-    public void goToDetailContact(Result receta) {
+    public void goToDetailContact(RecetaAdapter.RecetaViewHolder viewHolder, Result receta) {
         RecetarioActivity act = (RecetarioActivity) getActivity();
-        act.changeFragment(receta, Constants.TAG_DETAILRECETAFR);
+        act.changeFragment(viewHolder, receta, Constants.TAG_DETAILRECETAFR);
     }
 
     @Override

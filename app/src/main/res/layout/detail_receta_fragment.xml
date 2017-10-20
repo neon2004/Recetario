@@ -39,6 +39,7 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
+                android:transitionName="imgReceta"
                 />
 
             <!-- Toolbar -->

@@ -1,6 +1,7 @@
 package com.recetario.diegocampos.recetario.common.adapters;
 
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,7 +37,11 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.RecetaView
     
      public class RecetaViewHolder extends RecyclerView.ViewHolder {
 
-         ImageView imgHeroList;
+         public ImageView getImgRecetaList() {
+             return imgRecetaList;
+         }
+
+         ImageView imgRecetaList;
          TextView tvNamelist;
          CardView card;
 
@@ -50,28 +55,27 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.RecetaView
         public RecetaViewHolder(View itemView) {
             super(itemView);
 
-            imgHeroList = (ImageView)itemView.findViewById(R.id.imgHeroList);
+            imgRecetaList = (ImageView)itemView.findViewById(R.id.imgRecetaList);
             tvNamelist = (TextView)itemView.findViewById(R.id.tvNamelist);
             card = (CardView)itemView.findViewById(R.id.card);
 
 
         }
 
-        public void bindRecetas(Result receta) {
+        public void bindRecetas(final RecetaViewHolder viewHolder, Result receta) {
             this.receta = receta;
             tvNamelist.setText(receta.getTitle());
             Glide.with(ctx).load(receta.getThumbnail())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.loading)
                     .error(R.drawable.error)
                     .centerCrop()
                     .animate(android.R.anim.fade_in)
-                    .into(imgHeroList);
+                    .into(imgRecetaList);
 
             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    callback.goDetail(datos.get(getAdapterPosition()));
+                    callback.goDetail(viewHolder,datos.get(getAdapterPosition()));
                 }
             });
         }
@@ -96,7 +100,8 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.RecetaView
     @Override
     public void onBindViewHolder(RecetaViewHolder viewHolder, int pos) {
         Result item = datos.get(pos);
-        viewHolder.bindRecetas(item);
+        ViewCompat.setTransitionName(viewHolder.imgRecetaList, String.valueOf(pos) + "_image");
+        viewHolder.bindRecetas(viewHolder,item);
     }
 
     @Override

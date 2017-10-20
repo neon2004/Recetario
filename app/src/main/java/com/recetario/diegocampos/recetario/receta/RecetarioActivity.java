@@ -1,11 +1,15 @@
 package com.recetario.diegocampos.recetario.receta;
 
 import android.app.FragmentTransaction;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
+import android.transition.Fade;
 import android.widget.LinearLayout;
 
 
 import com.recetario.diegocampos.recetario.R;
+import com.recetario.diegocampos.recetario.common.DetailsTransition;
+import com.recetario.diegocampos.recetario.common.adapters.RecetaAdapter;
 import com.recetario.diegocampos.recetario.common.base.BaseActivity;
 import com.recetario.diegocampos.recetario.common.base.BaseFragment;
 import com.recetario.diegocampos.recetario.common.dialogs.DialogoWifi;
@@ -39,7 +43,7 @@ public class RecetarioActivity extends BaseActivity {
         crearRetrofitGson();
 
         if(isOnline()){
-            changeFragment(null, Constants.TAG_LISTARECETASFR);
+            changeFragment(null, null, Constants.TAG_LISTARECETASFR);
         }else{
             FragmentManager fragmentManager = getSupportFragmentManager();
             DialogoWifi dialogo = new DialogoWifi();
@@ -53,12 +57,12 @@ public class RecetarioActivity extends BaseActivity {
         if(FRAGMENT_ACTUAL instanceof ListRecetaFragments){
             finish();
         }else{
-            changeFragment(null, Constants.TAG_LISTARECETASFR);
+            changeFragment(null, null, Constants.TAG_LISTARECETASFR);
         }
     }
 
     // CAMBIAMOS EL FRAGMENT A MOSTRAR
-    public void changeFragment(Result receta, String framgenCargar) {
+    public void changeFragment(RecetaAdapter.RecetaViewHolder viewHolder, Result receta, String framgenCargar) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
@@ -77,6 +81,17 @@ public class RecetarioActivity extends BaseActivity {
 
                 detailRecetaFragments = DetailRecetaFragments_.builder().receta(receta).build();
                 FRAGMENT_ACTUAL = detailRecetaFragments;
+
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    detailRecetaFragments.setSharedElementEnterTransition(new DetailsTransition());
+                    detailRecetaFragments.setEnterTransition(new Fade());
+                    listRecetaFragments.setExitTransition(new Fade());
+                    detailRecetaFragments.setSharedElementReturnTransition(new DetailsTransition());
+                }
+
+                ft .addSharedElement(viewHolder.getImgRecetaList(), "imgReceta");
+                ft.addToBackStack(null);
                 ft.replace(android.R.id.content, detailRecetaFragments);
                 ft.commit();
                 break;

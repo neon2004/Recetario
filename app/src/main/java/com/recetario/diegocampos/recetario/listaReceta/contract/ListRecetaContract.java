@@ -16,7 +16,7 @@ import com.recetario.diegocampos.recetario.common.rest.recetas.Result;
 public class ListRecetaContract {
     public interface Presenter{
         void createAdapter(Recetas lisresult);
-        void goDetail(Result receta);
+        void goDetail(RecetaAdapter.RecetaViewHolder viewHolder, Result receta);
 
 
     }
@@ -24,7 +24,7 @@ public class ListRecetaContract {
     public interface View {
 
         void  setListAdapter(RecetaAdapter adapter);
-        void goToDetailContact(Result receta);
+        void goToDetailContact(RecetaAdapter.RecetaViewHolder viewHolder, Result receta);
         void setLayoutManager();
         RecyclerView getListView();
         void showImageFondo(boolean mostrar);
