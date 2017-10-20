@@ -31,10 +31,8 @@ public class RecetaInteractor {
         callback = listRecetaPresenter;
     }
 
-    public ArrayList<Recetas> getListHeroes(String query) {
-        // final ArrayList<Superhero> lisresult = new ArrayList<Superhero>();
-
-        call = BaseActivity.interfaces.getHeroes(query);
+    public ArrayList<Recetas> getListRecetas(String query) {
+        call = BaseActivity.interfaces.getRecetas(query);
         call.enqueue(new Callback<Recetas>() {
             @Override
             public void onResponse(Call<Recetas> call, Response<Recetas> response) {

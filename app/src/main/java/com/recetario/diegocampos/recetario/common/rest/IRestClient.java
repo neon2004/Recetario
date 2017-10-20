@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 public interface IRestClient {
     @GET(Constants.TAG_PARAM_URL)
-    Call<Recetas> getHeroes(@Query("q") String query);
+    Call<Recetas> getRecetas(@Query("q") String query);
 
 
 }

@@ -41,7 +41,7 @@ public class ListRecetaFragments extends BaseFragment implements ListRecetaContr
     LinearLayout activityMain;
     @ViewById(R.id.appbar)
     Toolbar appbar;
-    private ListRecetaPresenter heroListPresenter;
+    private ListRecetaPresenter recetaListPresenter;
 
     @FragmentArg
     String query;
@@ -49,10 +49,10 @@ public class ListRecetaFragments extends BaseFragment implements ListRecetaContr
 
 
     @AfterViews
-    protected void listHeroesFragmentsAfterViews() {
+    protected void listRecetaFragmentsAfterViews() {
 
-        this.heroListPresenter = new ListRecetaPresenter(this, getActivity());
-        this.heroListPresenter.start(query);
+        this.recetaListPresenter = new ListRecetaPresenter(this, getActivity());
+        this.recetaListPresenter.start(query);
         appbar.setTitle(R.string.app_name);
         ((AppCompatActivity)getActivity()).setSupportActionBar(appbar);
 
@@ -78,7 +78,7 @@ public class ListRecetaFragments extends BaseFragment implements ListRecetaContr
     @Override
     public void onDestroy() {
         super.onDestroy();
-        heroListPresenter.getInteractor().cancelCall();
+        recetaListPresenter.getInteractor().cancelCall();
     }
 
     @Override
@@ -92,14 +92,14 @@ public class ListRecetaFragments extends BaseFragment implements ListRecetaContr
 
             @Override
             public boolean onQueryTextSubmit(String s) {
-                heroListPresenter.getDatos(s);
+                recetaListPresenter.getDatos(s);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
                 if(!TextUtils.isEmpty(s)){
-                    heroListPresenter.getDatos(s);
+                    recetaListPresenter.getDatos(s);
                 }
                 return false;
             }

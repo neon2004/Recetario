@@ -18,8 +18,8 @@ public class ListRecetaPresenter implements ListRecetaContract.Presenter {
     private ListRecetaContract.View listRecetaFragments;
     private Activity act;
 
-    public ListRecetaPresenter(ListRecetaContract.View listHeroesFragments, Activity activity) {
-        this.listRecetaFragments = listHeroesFragments;
+    public ListRecetaPresenter(ListRecetaContract.View listRecetaFragments, Activity activity) {
+        this.listRecetaFragments = listRecetaFragments;
         this.interactor = new RecetaInteractor(activity,this);
         this.act = activity;
     }
@@ -29,7 +29,7 @@ public class ListRecetaPresenter implements ListRecetaContract.Presenter {
     }
 
     public void getDatos(String query){
-        interactor.getListHeroes(query);
+        interactor.getListRecetas(query);
     }
 
     @Override

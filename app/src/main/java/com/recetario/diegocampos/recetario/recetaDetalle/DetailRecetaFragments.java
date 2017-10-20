@@ -53,7 +53,7 @@ public class DetailRecetaFragments extends BaseFragment implements DetailRecetaC
     private DetailRecetaPresenter recetaDetailPresenter;
 
     @AfterViews
-    protected void detailHeroFragmentsAfterViews() {
+    protected void detailRecetaFragmentsAfterViews() {
         this.recetaDetailPresenter = new DetailRecetaPresenter(this, getActivity(), receta);
         this.recetaDetailPresenter.start();
 
